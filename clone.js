@@ -12,9 +12,9 @@ var typeOf = require('lutils-typeof')
 var clone = function(obj, options) {
     options       = options || {}
     options.depth = options.depth || 8
-    options.types = castTypes( options.types || { object: true, array: true } )
+    options.types = _castTypes( options.types || { object: true, array: true } )
 
-    return iterate( skeletonize(obj, options), obj, options.depth, options )
+    return _iterate( _skeletonize(obj, options), obj, options.depth, options )
 }
 
 module.exports = clone
@@ -25,10 +25,8 @@ module.exports = clone
 //
 
 
-function iterate(obj1, obj2, depth, options) {
+function _iterate(obj1, obj2, depth, options) {
     if ( --depth <= 0 ) return obj1
-
-    var parentType = typeOf(obj2)
 
     for ( var key in obj2 ) {
         if ( ! obj2.hasOwnProperty(key) ) continue
@@ -37,8 +35,8 @@ function iterate(obj1, obj2, depth, options) {
         var type  = typeOf(value)
 
         if ( type in options.types ) {
-            var skeleton = skeletonize(value, { type: type, types: options.types })
-            value = iterate(skeleton || value, value, depth, options)
+            var skeleton = _skeletonize(value, { type: type, types: options.types })
+            value = _iterate(skeleton || value, value, depth, options)
         }
 
         obj1[key] = value
@@ -47,7 +45,7 @@ function iterate(obj1, obj2, depth, options) {
     return obj1
 }
 
-function skeletonize(value, options) {
+function _skeletonize(value, options) {
     var type = options.type || typeOf(value)
 
     if ( ! ( type in options.types ) ) return null
@@ -66,7 +64,7 @@ function skeletonize(value, options) {
     }
 }
 
-function castTypes(types) {
+function _castTypes(types) {
     if ( typeOf.Object( types ) ) return types
 
     return types.reduce(function(hash, key) { hash[key] = true; return hash }, {})

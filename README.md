@@ -12,9 +12,9 @@ import clone from 'lutils-clone'
 var test = new class Test {}
 
 var obj = {
-	a: { b: 2 },
-	test,
-	fn: function() {}
+    a: { b: 2 },
+    test,
+    fn: function() {}
 }
 
 var newObj = clone(obj)
@@ -31,12 +31,12 @@ newObj.fn === obj.fn // true
 ### Options
 ```js
 {
-	// Decremented with each recursion for each nested object, halting the clone at 0
-	// A halted clone will preserve references to any remaining values
-	depth: 8,
+    // Decremented with each recursion for each nested object, halting the clone at 0
+    // A halted clone will preserve references to any remaining values
+    depth: 8,
 
-	// Determines whether recursing will occur. When this type matches, it will be iterated over.
-	types: { object: true, array: true }
-	types: [ "object", "array" ] // Can also be an array of type strings
+    // Determines whether recursing will occur. When this type matches, it will be iterated over.
+    types: { object: true, array: true }
+    types: [ "object", "array" ] // Can also be an array of type strings
 }
 ```
