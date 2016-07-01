@@ -1,33 +1,37 @@
 # clone `lutils-clone`
 Reliably and recursively clone javascript objects
 
+`npm install lutils-clone`
+
 ## API
 
 ### `clone([mixed], [[options]])`
 Clones an object, recursively.
 
+
 ```js
 import clone from 'lutils-clone'
 
-var test = new class Test {}
+const test = new class Test {}
 
-var obj = {
-    a: { b: 2 },
+const obj = {
+    a  : { b: 2 },
+    fn : function() {}
     test,
-    fn: function() {}
 }
 
-var newObj = clone(obj)
+const newObj = clone(obj)
 
-newObj.a.b = 5 // 5
-obj.a.b // 2
-newObj.a === obj.a // false
-newObj.test === test // false
+newObj.a.b = 5        // 5
+obj.a.b               // 2
+newObj.a === obj.a    // false
+newObj.test === test  // false
 newObj.test.__proto__ === test.__proto__ // true
-newObj.fn === obj.fn // true
+newObj.fn === obj.fn  // true
 ```
 
 ## Advanced usage
+
 ### Options
 ```js
 {
