@@ -9,7 +9,7 @@ var typeOf = require('lutils-typeof')
  *
  *  @return    {mixed}
  */
-var clone = function(obj, options) {
+function clone(obj, options) {
     options       = options || {}
     options.depth = options.depth || 8
     options.types = _castTypes( options.types || { object: true, array: true } )
