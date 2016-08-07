@@ -22,7 +22,8 @@ const obj = {
 
 const newObj = clone(obj)
 
-newObj.a.b = 5        // 5
+newObj.a.b = 5
+
 obj.a.b               // 2
 newObj.a === obj.a    // false
 newObj.test === test  // false
