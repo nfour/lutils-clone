@@ -1,7 +1,7 @@
 {
     "name"        : "lutils-clone",
     "description" : "Reliably and recursively clone javascript objects",
-    "version"     : "0.1.6",
+    "version"     : "0.1.7",
     "author"      : { "name": "nfour" },
     "repository"  : {
         "type" : "git",

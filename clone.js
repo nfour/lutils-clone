@@ -1,4 +1,5 @@
 var typeOf = require('lutils-typeof')
+var hasOwnProperty = Object.prototype.hasOwnProperty
 
 /**
  *  Clones an object by iterating over objects and array, re-wrapping them.
@@ -29,7 +30,7 @@ function _iterate(obj1, obj2, depth, options) {
     if ( --depth <= 0 ) return obj1
 
     for ( var key in obj2 ) {
-        if ( ! obj2.hasOwnProperty(key) ) continue
+        if ( ! hasOwnProperty.call(obj2, key) ) continue
 
         var value = obj2[key]
         var type  = typeOf(value)

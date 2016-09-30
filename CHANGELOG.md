@@ -1,3 +1,6 @@
+### `0.1.7`
+- Fix hasOwnProperty issues
+
 ### `0.1.0`
 - Rebuilt
 
