@@ -1,3 +1,6 @@
+### `0.1.8`
+- Add typescript definitions
+
 ### `0.1.7`
 - Fix hasOwnProperty issues
 
